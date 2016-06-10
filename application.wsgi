@@ -3,7 +3,7 @@ from ConfigParser import SafeConfigParser
 
 # get configuration
 config = SafeConfigParser()
-config.read('./hellowflask.cfg')
+config.read('./helloflask.cfg')
 PROJECT_DIR = config.get('project', 'PROJECT_DIR')
 
 # activate virtualenv
