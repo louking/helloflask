@@ -1,7 +1,12 @@
 import os, sys
+from ConfigParser import ConfigParser
 
-PROJECT_DIR = '/var/www/hello.scoretility.com/helloflask'
+# get configuration
+config = SafeConfigParser()
+config.read('./hellowflask.cfg')
+PROJECT_DIR = config.get('project', 'PROJECT_DIR')
 
+# activate virtualenv
 activate_this = os.path.join(PROJECT_DIR, 'bin', 'activate_this.py')
 execfile(activate_this, dict(__file__=activate_this))
 sys.path.append(PROJECT_DIR)
