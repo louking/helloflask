@@ -1,5 +1,5 @@
 import os, sys
-from ConfigParser import ConfigParser
+from ConfigParser import SafeConfigParser
 
 # get configuration
 config = SafeConfigParser()
