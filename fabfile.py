@@ -1,3 +1,5 @@
+from fabric.api import env, run, cd
+
 USERNAME = 'scoretility'
 SERVER = 'hello.scoretility.org'
 APP_NAME = 'helloflask'
