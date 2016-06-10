@@ -5,7 +5,7 @@ from ConfigParser import SafeConfigParser
 config = SafeConfigParser()
 thisdir = os.path.dirname(__file__)
 parentdir = '/'.join(thisdir.split('/')[:-1])
-config.readfp(open(os.path.join('parentdir', 'helloflask.cfg')))
+config.readfp(open(os.path.join(parentdir, 'helloflask.cfg')))
 PROJECT_DIR = config.get('project', 'PROJECT_DIR')
 
 # activate virtualenv
