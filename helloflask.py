@@ -1,4 +1,5 @@
 from flask import Flask
+import os.path
 from ConfigParser import SafeConfigParser
 
 app = Flask(__name__)
