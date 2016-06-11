@@ -8,14 +8,18 @@ app = Flask(__name__)
 # get configuration
 config = SafeConfigParser()
 thisdir = os.path.dirname(__file__)
-parentdir = '/'.join(thisdir.split('/')[:-1])
+sep = os.path.sep
+parentdir = sep.join(thisdir.split(sep)[:-1])
 config.readfp(open(os.path.join(parentdir, 'helloflask.cfg')))
 appconfig = config.items('app')
 
 # apply configuration to app
 # eval is safe because this configuration is controlled at root
 for key,value in appconfig:
-    app.config[key.upper()] = eval(value)
+    try:
+        app.config[key.upper()] = eval(value)
+    except SyntaxError:
+        app.config[key.upper()] = value
 
 @app.route("/")
 def hello():
@@ -40,9 +44,9 @@ class ViewDebug(MethodView):
             thistable = '<table>\n<thead><tr><th>Name</th><th>Value</th></tr></thead>\n<tbody>\n'
 
             for item in appconfig:
-                thistable.append('<tr><td>{}</td><td>{}</td></tr>\n').format(item['label'], item['value'])
+                thistable += '<tr><td>{}</td><td>{}</td></tr>\n'.format(item['label'], item['value'])
 
-            thistable.append('</tbody>\n</table>')
+            thistable += '</tbody>\n</table>'
             return thistable
 
         except:
