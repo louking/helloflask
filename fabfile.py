@@ -11,5 +11,5 @@ env.hosts = ["%s@%s" % (USERNAME, SERVER)]
 def deploy():
     with cd(PROJECT_DIR):
         run('git pull')
-        run('source bin/activate; pip install -r requirements.txt')
+        run('source bin/activate; pip install -r helloflask/requirements.txt')
         run('touch %s' % WSGI_SCRIPT)

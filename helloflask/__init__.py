@@ -11,8 +11,8 @@ print 'init fired'
 config = SafeConfigParser()
 thisdir = os.path.dirname(__file__)
 sep = os.path.sep
-parentdir = sep.join(thisdir.split(sep)[:-1])
-config.readfp(open(os.path.join(parentdir, 'helloflask.cfg')))
+cfgdir = sep.join(thisdir.split(sep)[:-2])
+config.readfp(open(os.path.join(cfgdir, 'helloflask.cfg')))
 appconfig = config.items('app')
 
 # apply configuration to app
