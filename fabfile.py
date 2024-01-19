@@ -8,8 +8,9 @@ WSGI_SCRIPT = 'application.wsgi'
 
 env.hosts = ["%s@%s" % (USERNAME, SERVER)]
 
-def deploy():
+def deploy(branch='master'):
     with cd(PROJECT_DIR):
         run('git pull')
-        run('source bin/activate; pip install -r helloflask/requirements.txt')
+        run('git checkout {}'.format(branch))
+        run('source bin/activate; pip install -r requirements.txt')
         run('touch %s' % WSGI_SCRIPT)
